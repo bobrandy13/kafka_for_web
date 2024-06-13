@@ -9,5 +9,12 @@ public class Partition
 
     // Set the max to 5; 
     // Dictates how many different portitions will store the same data 
-    private long replication_factor; 
+    private long replication_factor;
+
+    public Partition(long id, long consumer_id, long replicationFactor)
+    {
+        this.id = id; 
+        this.consumer_id = consumer_id;
+        this.replication_factor = replicationFactor;
+    }
 }

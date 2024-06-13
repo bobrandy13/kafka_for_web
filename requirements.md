@@ -30,7 +30,8 @@ Body
     "topic": string
 }
 	
-- /cluster - POST 
+- /cluster - POST
+Allow the user to create a new cluster from the API Route. 
 Creates a new Cluster and a new directory inside the working directory. Initialises a default of 1 broker and no topics inside
 {
     "name": string
