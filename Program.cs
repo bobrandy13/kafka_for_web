@@ -1,4 +1,13 @@
+using System.Data.SqlClient;
+using Dapper;
+using Kafka_for_web.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Dependency Injection 
+builder.Services.AddDbContext<KafkaContext>(options =>
+    options.UseSqlServer("Server=localhost;Database=webka;Trusted_Connection=True;"));
 
 // Add services to the container.
 

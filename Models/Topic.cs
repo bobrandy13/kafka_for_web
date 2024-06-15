@@ -2,15 +2,15 @@ namespace Kafka_for_web.Models;
 
 public class Topic
 {
-   private long id;
-   private string name;
+   public long Id { get; set; }
+   public string Name { get; set; }
 
    // the number of partitions each topic should have 
-   private long partitions;
-   private long servers;
-   private long replication_count;
+   public long NumPartitions { get; set; }
+   public long ReplicationFactor { get; set; }
+
+   public ICollection<Partition> Partitions { get; set; } = null!;
    
-   private List<Partition> _partitions;
-   
-   private TimeSpan retention_period; 
+
+   public TimeSpan RetentionPeriod; 
 }
