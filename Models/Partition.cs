@@ -18,24 +18,20 @@ public class Partition
     [Key]
     public long Id { get; set; }
     
-    public List<long>? consumers{ get; set; }
-
     // Set the max to 5, default to 3; 
     // Dictates how many different partitions will store the same data 
-    public long replication_factor { get; set; }
+    public long ReplicationFactor { get; set; }
 
-    // Stores the size in bytes;
-    public long size;
+    // Stores the current size in bytes of the partition;
+    public long Size;
 
     // Log file name
-    public string log_dir;
+    [StringLength(100)]
+    public string LogDir { get; set; } = null!;
 
-    // Stores the consumer offset when reading
-    public long offset; 
-    
     // The status of the partition
-    public PartitionStatus status { get; set; }
+    public PartitionStatus Status { get; init; }
     
     // Stores the most recent messages in an array
-    public List<Message> Messages { get; set; } = [];
+    public ICollection<Message> Messages { get; init; } = null!;
 }

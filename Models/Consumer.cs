@@ -1,22 +1,33 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Kafka_for_web.Models; 
 
-// Consumers can be part of things known as consumer groups; 
+// Consumers must be part of a consumerGroup
 
 public class Consumer {
-    private long id;
-    private string name;
+    public long Id { get; set; }
 
-    // Consumers can push their offset to the saved in the same location as the output. 
-    private long offset;
-    private List<string> subscriptions;
-    private string groupId;
-    private bool enableAutoCommit; 
+    [StringLength((100))] 
+    public string Name { get; set; } = null!;
+
+    // // Consumers can push their offset to the saved in the same location as the output. 
+    // public long offset;
+    public ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
+    
+    // All consumers must belong to a group 
+    public long ConsumerGroupId { get; set; } 
+    
+    // Allows the consumer to autocommit their offset to the partition that they are reading from. 
+    public bool EnableAutoCommit { get; set; }
 }
 
-// Store what the consumer is subscribed to
+// Many-to-many relationship
 public class Subscription
 {
-    private Consumer _consumer;
-    private Topic _topic; 
-    private long _offset; 
+    public long Id { get; set; }
+    public Consumer Consumer { get; set; } = null!;
+    public Topic Topic { get; set; } = null!;
+    
+    // The partition that the consumer is reading from
+
 }

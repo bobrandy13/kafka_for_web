@@ -12,6 +12,7 @@ Kafka Cluster
 Messages should be able to be sent in batch. The bottleneck is typically over network bandwidth.
 Something called asynchronous send. Producers will wait to accumulate a certain amount of data before hitting send, to save network bandwidth.
 
+The offset are regularly committed to an internal topic called __consumer_offsets 
 The partition should keep track of the offset and save it to a log file  
 
 Workflow -

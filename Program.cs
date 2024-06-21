@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Dependency Injection 
 builder.Services.AddDbContext<KafkaContext>(options =>
-    options.UseSqlServer("Server=localhost;Database=webka;Trusted_Connection=True;"));
+    options.UseSqlServer("Server=localhost;Database=webka;Trusted_Connection=True;TrustServerCertificate=True"));
 
 // Add services to the container.
 
